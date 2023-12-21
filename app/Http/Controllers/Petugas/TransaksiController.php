@@ -17,4 +17,9 @@ class TransaksiController extends Controller
     {
         return view('petugas/transaksi/index');
     }
+
+    function create()
+    {
+        return 'kas';
+    }
 }
