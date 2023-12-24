@@ -19,7 +19,7 @@
 
     <div class="row">
         <div class="col-md-12 mb-2">
-            @if ($keranjang->tanggal_pinjam != '')
+            @if ($keranjang->tanggal_pinjam != '' && $keranjang->tanggal_pinjam != '01-Jan-2023')
                 <strong>Tanggal Pinjam: {{ $keranjang->tanggal_pinjam }}</strong>
             @else
                 <button wire:click="pinjam({{ $keranjang->id }})" class="btn btn-sm btn-success">Pinjam</button>
@@ -52,7 +52,7 @@
                             <td>{{ $item->buku->rak->rak }}</td>
                             <td>{{ $item->buku->rak->baris }}</td>
                             <td>
-                                @if (!$keranjang->tanggal_pinjam)
+                                @if ($keranjang->tanggal_pinjam && $keranjang->tanggal_pinjam != '01-Jan-2023')
                                     <button wire:click="hapus({{ $keranjang->id }}, {{ $item->id }})"
                                         class="btn btn-sm btn-danger">Hapus</button>
                                 @endif
@@ -61,7 +61,7 @@
                     @endforeach
                 </tbody>
             </table>
-            @if (!$keranjang->tanggal_pinjam)
+            @if ($keranjang->tanggal_pinjam && $keranjang->tanggal_pinjam != '01-Jan-2023')
                 <button wire:click="hapusMasal" class="btn btn-sm btn-danger">Hapus Masal</button>
             @endif
         </div>
